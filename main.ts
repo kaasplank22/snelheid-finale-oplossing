@@ -13,7 +13,7 @@ serial.writeLine("test 1 2 3 ")
 let fase = 0
 let laag = 255
 laag = 512
-if (true) {
+while (true) {
     let hoog = 0
     if (fase == 0 && pins.analogReadPin(AnalogPin.P0) > hoog) {
         tijd_0 = input.runningTimeMicros()
@@ -42,7 +42,6 @@ if (true) {
     }
     if (fase == 5 && pins.analogReadPin(AnalogPin.P2) < laag) {
         tijd_5 = input.runningTimeMicros()
-        fase = 0
         basic.showLeds(`
             . . . . .
             . . . . .
@@ -51,5 +50,6 @@ if (true) {
             . . . . .
             `)
         serial.writeLine("" + tijd_0 + "  " + tijd_1 + "  " + tijd_2 + "  " + tijd_3 + "  " + tijd_4 + "  " + tijd_5)
+        fase = 0
     }
 }
